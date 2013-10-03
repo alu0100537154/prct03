@@ -1,0 +1,283 @@
+
+18. Escriba el programa que muestra por la consola la frase"Hola Mundo"
+.¿Qué significado tiene la salida? (puts ’Hola Mundo’).
+
+
+2.0.0p247 :001 > puts 'Hola mundo'
+Hola mundo
+ => nil 
+
+No tiene ningún significado.
+
+
+21. ¿Qué diferencia hay entre "\t\n" y ’\t\n’?
+
+"\t\n":lo interpetra con un tabulador y un salto de linea.
+
+’\t\n’: muestra la cadena tal cual.
+
+
+22.¿Cómo funciona %q? ¿Que es %q{hello world\n}? ¿Que es %q{’a’ ’b’ ’c’}?
+%q: se usa para poner una citazion con '
+%q{hello world\n}: muestra hello world como una cadena de texto "hello world"
+%q{’a’ ’b’ ’c’}: muestra los caracteres a, b, c, como una cadena de texto
+
+23.¿Como funciona %Q? ¿Que es %Q{hello world\n}? ¿Que es %Q{"a" "b" "c"}?
+%Q: se usa para poner una citazion con "
+%Q{hello world\n}: muestra hello world\n como una citazion con entre ""
+%Q{"a" "b" "c"}: muestra "a" "b" "c" como una citazion individual de cada caracter entre comillas
+
+24. ¿Qué queda en c?
+irb(main):001:0> a = 4
+=> 4
+irb(main):002:0> b =2
+=> 2
+irb(main):003:0> c = <<HERE
+irb(main):004:0" --#{a}--
+irb(main):005:0" --#{b}--
+irb(main):006:0" HERE
+
+Queda en c:
+ => "--4--\n--2--\n" 
+
+
+25. ¿Qué queda en c?
+irb(main):001:0> a = 4
+=> 4
+irb(main):002:0> b =2
+=> 2
+irb(main):008:0> c = <<’HERE’
+irb(main):004:0" --#{a}--
+irb(main):005:0" --#{b}--
+irb(main):006:0" HERE
+
+Queda en c, se interpretan los valores: 
+ => "--\#{a}--\n--\#{b}--\n" 
+
+26.s = "hello"
+. ¿Cuál es el valor de las siguientes expresiones?
+s[0,2]
+s[-1,1]
+s[0,10]
+
+
+2.0.0p247 :016 > s = "hello"
+ => "hello" 
+2.0.0p247 :017 > s[0,2]
+ => "he" 
+2.0.0p247 :018 > s[-1,1]
+ => "o" 
+2.0.0p247 :019 > s[0,10]
+ => "hello" 
+
+
+27.¿Que queda en g?
+>> g = "hello"
+=> "hello"
+>> g << " world"
+=> "hello world"
+
+28. ¿Qué queda en e?
+>> e = ’.’*3
+
+Queda en e: 
+ => "..."
+
+29. ¿Cual es el resultado?
+>> a = 1
+=> 1
+>> "#{a=a+1} "*3
+=> "2 2 2 "
+ 
+
+30.Qué es esto? %w[this is a test]
+
+ => ["this", "is", "a", "test"] 
+
+Nos devuelve el valor interpretado, entre comillas.
+
+31. ¿Que es esto? %w[\t \n]
+Separa los caracteres que esten separados por espacios dentro de los corchetes y los pones como ["\t" , "\n"]
+
+
+32.¿Qué es esto? %W[\t \n]
+
+ => ["\t", "\n"] 
+
+Nos devuelve el valor interpretado, entre comillas.
+
+33. ¿Que contiene nils? 
+nils = Array.new(3)
+Crea un array en la variable nils de tres elementos y los inicializa a nil cada uno de ellos quedando asi: => [nil, nil, nil]
+
+34.¿Qué contiene zeros? zeros = Array.new(3, 0)
+
+ => [0, 0, 0] 
+
+35. ¿Qu´e queda en b?
+>> x = [[1,2],[3,4]]
+=> [[1, 2], [3, 4]]
+>> b = Array.new(x)
+=> [[1, 2], [2, 3]]
+
+36.¿Qué queda en c?
+>> c = Array.new(3) { |i| 2*i }
+
+Queda en c:
+ => [0, 2, 4] 
+
+37. ¿Cu´al es el resultado de cada una de estas operaciones?
+>> a = (’a’..’e’).to_a
+=> ["a", "b", "c", "d", "e"]
+>> a[1,1]
+=> ["b"]
+>> a[-2,2]
+=> ["d", "e"]
+>> a[0..2]
+=> ["a", "b", "c"]
+>> a[0...1]
+=> ["a"]
+>> a[-2..-1]
+=> ["d", "e"]
+
+38. ¿Cu´al es el resultado de cada una de estas operaciones?
+>> a
+=> ["a", "b", "c", "d", "e"]
+>> a[0,2] = %w{A B}
+=> ["A", "B"]
+>> a
+=> ["A", "B", "C", "D", "E"]
+>> a[2..5] = %w{C D E}
+=> ["C", "D", "E"]
+>> a
+=> ["A", "B", "C", "D", "E"]
+>> a[0,0] = [1,2,3]
+=> [1, 2, 3]
+>> a
+=> ["1,2,3", "A", "B", "C", "D", "E"]
+>> a[0,2] = []
+=> []
+>> a
+=> ["B", "C", "D", "E"]
+>> a[-1,1] = [ ’Z’ ]
+=> ["Z"]
+>> a
+=> ["B", "C", "D", "Z"]
+>> a[-2,2] = nil
+=> nil
+>> a
+=> ["B", "C"]
+
+39. ¿Cu´al es el resultado de cada una de estas operaciones?
+>> a = (1...4).to_a
+=> [1, 2, 3]
+>> a = a + [4, 5]
+=> [1, 2, 3, 4, 5]
+>> a += [[6, 7, 8]]
+=> [1, 2, 3, 4, 5, [6, 7, 8]]
+>> a = a + 9
+TypeError: can't convert Fixnum into Array
+from (irb):78:in `+'
+from (irb):78
+from :0
+
+40.¿Cuál es el resultado de cada una de estas operaciones?
+>> x = %w{a b c b a}
+=> ["a", "b", "c", "b", "a"] 
+
+>> x = x - %w{b c d}
+=>["a", "a"] 
+
+41. ¿Cuál es el resultado de cada una de estas operaciones?
+>> z = [0]*8
+=> [0, 0, 0, 0, 0, 0, 0, 0]
+
+42.¿Cuál es el resultado de cada una de estas operaciones?
+>> a = []
+=> []
+>> a << 1
+=>[1]
+>> a << 2 << 3
+=> [1, 2, 3]
+>> a << [4, 5, 6]
+=>[1, 2, 3, [4, 5, 6]] 
+>> a.concat [7, 8]
+=>[1, 2, 3, [4, 5, 6], 7, 8]
+
+43. ¿Cuáls el resultado de cada una de estas operaciones?
+>> a = [1, 1, 2, 2, 3, 3, 4]
+=> [1, 1, 2, 2, 3, 3, 4]
+>> b = [5, 5, 4, 4, 3, 3, 2]
+=> [5, 5, 4, 4, 3, 3, 2]
+>> c = a | b
+=>[1, 2, 3, 4, 5] 
+>> d = b | a
+=>[5, 4, 3, 2, 1] 
+>> e = a & b
+=>[2, 3, 4]
+>> f = b & a
+=>[4, 3, 2] 
+
+
+44.>> a = 1..10
+=> 1..10
+>> a.class
+=> Range
+>> a.to_a
+=>[1, 2, 3, 4, 5, 6, 7, 8, 9, 10] 
+>> b = 1...10
+=> 1....10
+>> b.to_a
+=>[1, 2, 3, 4, 5, 6, 7, 8, 9] 
+
+>> b.include? 10
+=> false
+>> b.include? 8
+=> true
+>> b.step(2) {|x| print "#{x} " }
+>> 1..3.to_a
+
+
+45.¿Qué resultados dan las siguientes operaciones?
+>> r = 0...100
+=> 0....100
+>> r.member? 50
+=>true
+>> r.include? 99.9
+=>true
+>> r.member? 99.9
+=>true
+
+46. ¿Qu´e resultados dan las siguientes operaciones?
+>> true.class
+=> TrueClass
+>> false.class
+=> FalseClass
+>> puts "hello" if 0
+=> hello
+=> nil
+>> puts "hello" if nil
+=> nill
+>> puts "hello" if ""
+=> (irb):83: warning: string literal in condition
+hello
+=> nil
+
+47.¿Qué resultados dan las siguientes operaciones?
+>> x = :sym
+=> :sym
+>> x.class
+=>Symbol
+>> x == ’sym’
+=>false
+>> x == :sym
+=>true
+>> z = :’a long symbol’
+=> :"a long symbol"
+>> z.class
+=>Symbol
+>> x == ’sym’.to_sym
+=>true
+>> x.to_s == ’sym’
+=> true.
+
